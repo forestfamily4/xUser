@@ -5,9 +5,9 @@ async function main() {
   process.on("uncaughtException", (err)=>console.log(err));
   const server=new Server("http://localhost:3000")
   server.start()
-  // const client=new Twitter()
-  // await client.login()
-  // client.startTimer()  
+  const client=new Twitter()
+  await client.login()
+  client.startTimer()  
 } 
 
 main()
