@@ -45,9 +45,10 @@ export class Twitter {
   public async startTimer() {
     const exec = async () => {
       console.log("exec")
-      const tweets = (await this.client?.getTweetApi().getHomeTimeline({ "count": 1 }))?.data.data
+      const tweets = (await this.client?.getTweetApi().getHomeTimeline({ "count": 20 }))?.data.data
       if (!tweets) { return; }
       for await (const i of tweets.keys()) {
+        if(i>5){break}
         const tweet = tweets[i]
         const text = tweet?.tweet.legacy?.fullText
         console.log(text)
