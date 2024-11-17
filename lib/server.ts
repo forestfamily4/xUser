@@ -16,9 +16,10 @@ export class Server {
 
     this.uptime();
   }
-  public start(){    
-    this.app.listen(3000).on("listening", () => {
-      console.log("Server is running on port 3000");
+  public start(){   
+    const port=process.env.PORT || 4000 
+    this.app.listen(port).on("listening", () => {
+      console.log(`server started on ${port}`);
     })
   }
 
