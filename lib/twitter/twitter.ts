@@ -54,6 +54,7 @@ export class Twitter {
         console.log(text)
         if (!text) { continue; }
         if (text.length < 20) { continue; }
+        await new Promise(resolve => setTimeout(resolve, 30000))
         const res = (await runAI(text))
         const reply = res.content?.slice(0, 200)
         console.log(reply, res.error)
