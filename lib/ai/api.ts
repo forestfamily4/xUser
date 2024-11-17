@@ -3,10 +3,10 @@ import { runAzure } from "./azure";
 export const models = [
   "cohere-command-r-plus",
   "Mistral-large-2407",
-  "Ministral-3B",
+  "AI21-Jamba-1.5-Large",
 ] as const;
 export type Model = (typeof models)[number];
-const initModel: Model = "Ministral-3B";
+const initModel: Model = "AI21-Jamba-1.5-Large";
 export type System = {
   systemMessage?: string;
   model: Model;
