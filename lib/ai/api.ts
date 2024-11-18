@@ -6,7 +6,7 @@ export const models = [
   "AI21-Jamba-1.5-Large",
 ] as const;
 export type Model = (typeof models)[number];
-const initModel: Model = "AI21-Jamba-1.5-Large";
+const initModel: Model = "cohere-command-r-plus";
 export type System = {
   systemMessage?: string;
   model: Model;
