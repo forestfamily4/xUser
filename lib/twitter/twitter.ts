@@ -9,7 +9,7 @@ import { runAI } from "../ai/api";
 
 export class Twitter {
   private client: TwitterOpenApiClient | null = null;
-  private interval = 3 * 60 * 60 * 1000;
+  private interval = 1.5 * 60 * 60 * 1000;
   private timer: NodeJS.Timeout | null = null;
   constructor() { }
   public async login() {
