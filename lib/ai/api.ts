@@ -4,9 +4,10 @@ export const models = [
   "cohere-command-r-plus",
   "Mistral-large-2407",
   "AI21-Jamba-1.5-Large",
+  "Cohere-command-r-08-2024",
 ] as const;
 export type Model = (typeof models)[number];
-const initModel: Model = "cohere-command-r-plus";
+const initModel: Model = "Cohere-command-r-08-2024";
 export type System = {
   systemMessage?: string;
   model: Model;
