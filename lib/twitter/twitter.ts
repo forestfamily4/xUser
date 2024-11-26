@@ -48,7 +48,7 @@ export class Twitter {
       const tweets = (await this.client?.getTweetApi().getHomeTimeline({ "count": 20 }))?.data.data
       if (!tweets) { return; }
       for await (const i of tweets.keys()) {
-        if(i>2){break}
+        if(i<18){continue}
         const tweet = tweets[i]
         const text = tweet?.tweet.legacy?.fullText
         console.log(text)
