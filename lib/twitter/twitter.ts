@@ -49,6 +49,7 @@ export class Twitter {
       if (!tweets) { return; }
       for await (const i of tweets.keys()) {
         if(i<18){continue}
+        if(i>20){return;}
         const tweet = tweets[i]
         const text = tweet?.tweet.legacy?.fullText
         console.log(text)
