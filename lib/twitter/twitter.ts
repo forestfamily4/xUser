@@ -62,7 +62,6 @@ export class Twitter {
         if (!reply) { continue; }
         if (res?.error) { continue; }
         await this.client?.getPostApi().postCreateTweet({
-          "inReplyToTweetId": tweet.tweet.restId,
           "tweetText": reply,
         })
         await new Promise(resolve => setTimeout(resolve, 30000))
