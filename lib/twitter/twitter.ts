@@ -62,7 +62,7 @@ export class Twitter {
         if (!reply) { continue; }
         if (res?.error) { continue; }
         await this.client?.getPostApi().postCreateTweet({
-          "tweetText": reply,
+          "tweetText": `${tweet.tweet.legacy?.entities.urls[0].url}\n${reply}`,
         })
         await new Promise(resolve => setTimeout(resolve, 30000))
       }
