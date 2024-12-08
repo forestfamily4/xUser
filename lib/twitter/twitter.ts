@@ -52,13 +52,13 @@ export class Twitter {
         if(i>20){return;}
         const tweet = tweets[i]
         const text = tweet?.tweet.legacy?.fullText
-        console.log(text)
+        console.log("text:"+text)
         if (!text) { continue; }
         if (text.length < 20) { continue; }
         await new Promise(resolve => setTimeout(resolve, 20*60*1000))
         const res = (await runAI(text))
         const reply = res.content?.slice(0, 200)
-        console.log(reply, res.error)
+        console.log("reply:",reply, res.error)
         if (!reply) { continue; }
         if (res?.error) { continue; }
         await this.client?.getPostApi().postCreateTweet({
