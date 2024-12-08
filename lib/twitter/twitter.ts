@@ -59,7 +59,6 @@ export class Twitter {
         const reply = res.content?.slice(0, 200)
         if (!reply) { continue; }
         if (res?.error) { continue; }
-        console.log(tweet.tweet)
         const url = `https://x.com/_/status/${tweet.tweet.restId}`
         console.log("reply:", reply, url, res.error)
         await new Promise(resolve => setTimeout(resolve, 20 * 60 * 1000))
