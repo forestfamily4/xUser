@@ -48,19 +48,21 @@ export class Twitter {
       const tweets = (await this.client?.getTweetApi().getHomeTimeline({ "count": 20 }))?.data.data
       if (!tweets) { return; }
       for await (const i of tweets.keys()) {
-        if(i<18){continue}
-        if(i>20){return;}
+        if (i < 18) { continue }
+        if (i > 20) { return; }
         const tweet = tweets[i]
         const text = tweet?.tweet.legacy?.fullText
-        console.log("text:"+text)
+        console.log("text:" + text)
         if (!text) { continue; }
         if (text.length < 20) { continue; }
-        await new Promise(resolve => setTimeout(resolve, 20*60*1000))
         const res = (await runAI(text))
         const reply = res.content?.slice(0, 200)
-        console.log("reply:",reply, res.error)
         if (!reply) { continue; }
         if (res?.error) { continue; }
+        console.log(tweet.tweet)
+        const url = `https://x.com/_/status/${tweet.tweet.restId}`
+        console.log("reply:", reply, url, res.error)
+        await new Promise(resolve => setTimeout(resolve, 20 * 60 * 1000))
         await this.client?.getPostApi().postCreateTweet({
           "tweetText": `${tweet.tweet.legacy?.entities.urls[0].url}\n${reply}`,
         })
