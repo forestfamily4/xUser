@@ -61,9 +61,8 @@ export class Twitter {
         if (res?.error) { continue; }
         const url = `https://x.com/_/status/${tweet.tweet.restId}`
         console.log("reply:", reply, url, res.error)
-        await new Promise(resolve => setTimeout(resolve, 20 * 60 * 1000))
         await this.client?.getPostApi().postCreateTweet({
-          "tweetText": `${tweet.tweet.legacy?.entities.urls[0].url}\n${reply}`,
+          "tweetText": `${url}\n${reply}`,
         })
         await new Promise(resolve => setTimeout(resolve, 30000))
       }
